@@ -377,65 +377,65 @@
   @media (prefers-reduced-motion: reduce){
     .menu-sections-track, .menu-underline, .menu-sections-wrapper{ transition:none !important; }
   }
-  
+
   </style>
 
-<script>
-(function(){
-  var nav      = document.querySelector('.menu');
-  var buttons  = Array.prototype.slice.call(nav.querySelectorAll('.menu-item'));
-  var track    = document.querySelector('.menu-sections-track');
-  var sections = Array.prototype.slice.call(document.querySelectorAll('.menu-section'));
-  var wrapper  = document.querySelector('.menu-sections-wrapper');
-  var underline= document.querySelector('.menu-underline');
-  var currentIndex = 0;
+  <script>
+  (function(){
+    var nav      = document.querySelector('.menu');
+    var buttons  = Array.prototype.slice.call(nav.querySelectorAll('.menu-item'));
+    var track    = document.querySelector('.menu-sections-track');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('.menu-section'));
+    var wrapper  = document.querySelector('.menu-sections-wrapper');
+    var underline= document.querySelector('.menu-underline');
+    var currentIndex = 0;
 
-  function moveUnderline(btn){
-    underline.style.width = btn.offsetWidth + 'px';
-    underline.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
-  }
+    function moveUnderline(btn){
+      underline.style.width = btn.offsetWidth + 'px';
+      underline.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
+    }
 
-  function setHeight(){
-    wrapper.style.height = sections[currentIndex].offsetHeight + 'px';
-  }
+    function setHeight(){
+      wrapper.style.height = sections[currentIndex].offsetHeight + 'px';
+    }
 
-  function goTo(index){
-    if (index === currentIndex) return;
-    currentIndex = index;
+    function goTo(index){
+      if (index === currentIndex) return;
+      currentIndex = index;
 
-    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
 
-    buttons.forEach(function(b, i){
-      b.classList.toggle('active', i === index);
+      buttons.forEach(function(b, i){
+        b.classList.toggle('active', i === index);
+      });
+
+      moveUnderline(buttons[index]);
+      setHeight();
+
+      buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    buttons.forEach(function(btn, i){
+      btn.addEventListener('click', function(){ goTo(i); });
     });
 
-    moveUnderline(buttons[index]);
-    setHeight();
+    window.addEventListener('resize', function(){
+      moveUnderline(buttons[currentIndex]);
+      setHeight();
+    });
 
-    buttons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-  }
+    window.addEventListener('load', function(){
+      moveUnderline(buttons[currentIndex]);
+      setHeight();
+    });
 
-  buttons.forEach(function(btn, i){
-    btn.addEventListener('click', function(){ goTo(i); });
-  });
-
-  window.addEventListener('resize', function(){
-    moveUnderline(buttons[currentIndex]);
-    setHeight();
-  });
-
-  window.addEventListener('load', function(){
-    moveUnderline(buttons[currentIndex]);
-    setHeight();
-  });
-
-  // Run once immediately too, in case 'load' already fired
-  // (e.g. script injected after page is fully ready).
-  setTimeout(function(){
-    moveUnderline(buttons[currentIndex]);
-    setHeight();
-  }, 0);
-})();
-</script>
-</body>
+    // Run once immediately too, in case 'load' already fired
+    // (e.g. script injected after page is fully ready).
+    setTimeout(function(){
+      moveUnderline(buttons[currentIndex]);
+      setHeight();
+    }, 0);
+  })();
+  </script>
+  </body>
 </html>
