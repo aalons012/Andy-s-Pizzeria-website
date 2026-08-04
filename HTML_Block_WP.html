@@ -190,17 +190,28 @@
  
         <section class="menu-section" id="pizzas">
           <h2>Pizzas</h2>
-          <div class="menu-dish">
+          <nav class="pizza-sizes">
+            <div class="size-item">
+              <span class="size-title">Small</span>
+              <span class="size-details">12 inches • 6 slices</span>
+            </div>
+            <div class="size-item">
+              <span class="size-title">Medium</span>
+              <span class="size-details">14 inches • 8 slices</span>
+            </div>
+            <div class="size-item">
+              <span class="size-title">Large</span>
+              <span class="size-details">16 inches • 10 slices</span>
+            </div>
+          </nav>
+          <div class="menu-dish"> 
             <div>
               <span class="menu-dish-name">
-                Margherita
-              </span>
-              <span class="menu-dish-desc">
-                Fresh mozzarella, basil, San Marzano tomato
+                Cheese
               </span>
             </div>
             <span class="menu-dish-price">
-              $15.99
+              $12.95 | $14.95 | $16.95
             </span>
           </div>
           <div class="menu-dish">
@@ -209,31 +220,96 @@
             </span>
           </div>
           <span class="menu-dish-price">
-            $16.99
+            $13.95 | $15.95 | $17.95
           </span>
           </div>
+          <br>
+          <h2> Specialty Pizzas</h2>
+          <nav style="font-size: 20px;"> Small &nbsp; &nbsp; Medium &nbsp; &nbsp; Large </nav>
+          <nav style="color:#6b6b6b; padding-left: px;">
+            <b>
+              $15.95 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$17.95 &nbsp; &nbsp; &nbsp; &nbsp; $20.95
+            </b>
+          </nav>
           <div class="menu-dish">
             <div>
               <span class="menu-dish-name">
-                Meat Lovers
+                Alfredo
               </span>
               <span class="menu-dish-desc">
-                Sausage, pepperoni, bacon, ham
+                Alfredo Sause, Mozzarella Cheese & bits of Bacon
               </span>
             </div>
-            <span class="menu-dish-price">
-              $19.99
-            </span>
           </div>
           <div class="menu-dish">
             <div>
               <span class="menu-dish-name">
-                Veggie Supreme
+                Andy's Pizza
+              </span>
+              <span class="menu-dish-desc">
+                Tomato Sauce, Mozzarella Cheese, SLICED Meatballs & Ricotta Cheese
               </span>
             </div>
-            <span class="menu-dish-price">
-              $17.99
-            </span>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                Bianca White
+              </span>
+              <span class="menu-dish-desc">
+                <b>!!!THERES NO SAUCE!!! - ONLY:</b> Parmesan, Mozzarella, &amp; Ricotta Cheese w/ Tomato Slices &amp; Fresh Basil
+              </span>
+            </div>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                Hawaiian
+              </span>
+              <span class="menu-dish-desc">
+                Tomato Sauce, Mozzarella Cheese, Ham &amp; Pineapple
+              </span>
+            </div>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                Margherita
+              </span>
+              <span class="menu-dish-desc">
+                Tomato sauce, Fresh Mozzarella Cheese &amp; Fresh Basil 
+              </span>
+            </div>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                MeatLovers
+              </span>
+              <span class="menu-dish-desc">
+                Tomato Sauce, Mozzarella Cheese, Pepperoni, Italian Sausage, Ham &amp; Meat Sause
+              </span>
+            </div>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                Supreme
+              </span>
+              <span class="menu-dish-desc">
+                Tomato sauce, Mozzarella Cheese, Pepperoni, Italian Sausage, Mushrooms, Black Olives &amp; Green Peppers
+              </span>
+            </div>
+          </div>
+          <div class="menu-dish">
+            <div>
+              <span class="menu-dish-name">
+                Veggie
+              </span>
+              <span class="menu-dish-desc">
+                Tomato Sauce, Mozzarella Cheese, Mushrooms, Black Olives, Green Peppers &amp; Freshly Chopped Tomatoes
+              </span>
+            </div>
           </div>
         </section>
 
@@ -468,6 +544,49 @@
   .menu-section ul{
     color: #888;
     margin: 0 0 0;
+  }
+
+  .menu-section nav{
+    color:#fff;
+    text-align: center;
+  }
+
+  /* Container for the size blocks */
+  .pizza-sizes {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* This centers the whole section horizontally */    
+    margin-bottom: 25px;         /* Generous spacing above dishes */
+  }
+
+  /* Individual size column layout */
+  .size-item {
+    display: flex;
+    flex-direction: column;      /* Stacks title above details */
+    align-items: center;         /* Centers the text elements */
+    text-align: center;
+  }
+
+  /* Style for Small, Medium, Large */
+  .size-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2px;          /* Minimal space between title and details */
+  }
+
+  /* Style for inches and slices text */
+  .size-details {
+    color: #6b6b6b;                 /* Slightly muted text color */
+  }
+
+  /* Add the vertical divider lines, skipping the first element */
+  .size-item:not(:first-child) {
+    align-items: center;
+    border-left: 2px solid #ccc; /* Thickness, style, and color of line */
+    margin-left: 20px;             /* Space before the line */
+    padding-left: 20px;            /* Space after the line */
   }
 
   .menu-dish{
